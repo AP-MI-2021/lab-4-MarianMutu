@@ -26,6 +26,7 @@ def test_same_number_of_even_numbers():
     assert same_number_of_even_numbers([2, 1, 7, 8, 1], [1, 3, 4, 6, 2]) == False
     assert same_number_of_even_numbers([], []) == False
 
+
 def a_intersectat_cu_b(lst_a, lst_b):
     """
     detremina intersectia multimii A cu multimea B
@@ -33,7 +34,7 @@ def a_intersectat_cu_b(lst_a, lst_b):
     :param lst_b: multimea B
     :return: Intersectia multimilor
     """
-    rez = [] # rezultatul cerut
+    rez = []  # rezultatul cerut
     for x in lst_a:
         if x in lst_b:
             rez.append(x)
@@ -44,6 +45,7 @@ def test_a_intersectat_cu_b():
     assert a_intersectat_cu_b([1, 2, 3], [2, 3, 4]) == [2, 3]
     assert a_intersectat_cu_b([23, 34, 56, 78], [1, 2, 3, 4]) == []
     assert a_intersectat_cu_b([], []) == []
+
 
 def is_palindrome(nr):
     """
@@ -81,8 +83,9 @@ def det_palidroame_din_a_concatenat_b(lst_a, lst_b):
                     rez.append(int(var))
     return rez
 
+
 def test_det_palidroame_din_a_concatenat_b():
-    assert det_palidroame_din_a_concatenat_b([12, 22, 36, 11], [21, 23 ,63, 55, 424]) == [1221, 3663]
+    assert det_palidroame_din_a_concatenat_b([12, 22, 36, 11], [21, 23, 63, 55, 424]) == [1221, 3663]
     assert det_palidroame_din_a_concatenat_b([1, 23, 12], [21, 3, 21, 7]) == [121, 1221]
 
 
@@ -117,7 +120,7 @@ def a_divizibil_cu_elem_din_lst(a, lst):
 
 
 def test_a_divizibil_cu_elem_din_lst():
-    assert a_divizibil_cu_elem_din_lst(12, [1, 2, 3 ,4]) == True
+    assert a_divizibil_cu_elem_din_lst(12, [1, 2, 3, 4]) == True
     assert a_divizibil_cu_elem_din_lst(2, [1, 4, 6]) == False
     assert a_divizibil_cu_elem_din_lst(3, [6]) == False
 
