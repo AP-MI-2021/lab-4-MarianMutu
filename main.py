@@ -122,11 +122,36 @@ def test_a_divizibil_cu_elem_din_lst():
     assert a_divizibil_cu_elem_din_lst(3, [6]) == False
 
 
+def cerinta5(lst_a, lst_c):
+    """
+    inlocuieste toate elementele din lista lst_a cu
+    oglinditul lor daca elementele sunt divizibile
+    cu toate elemntele din lista lst_c
+    :param lst_a: int
+    :param lst_c: int
+    :return: int
+    """
+    rez = []
+    for x in lst_a:
+        if a_divizibil_cu_elem_din_lst(x, lst_c):
+            og = oglindit(x)
+            rez.append(og)
+        else:
+            rez.append(x)
+    return rez
+
+
+def test_cerinta5():
+    assert cerinta5([12, 22, 36, 363], [1, 2, 3, 4]) == [21, 22, 63, 363]
+    assert cerinta5([22, 23, -6, 55, 363], [1, 2, 3, 4]) == [22, 23, -6, 55, 363]
+
+
 def read_list():
     list_str = input("Introduceti termenii din lista: ").split(" ")
     lst = []
     for x in list_str:
-        lst.append(int(x))
+        x = int(x)
+        lst.append(x)
     return lst
 
 
@@ -160,7 +185,8 @@ def main():
             print(det_palidroame_din_a_concatenat_b(lst_a, lst_b))
         elif cmd == '5':
             lst_c = read_list()
-
+            print(cerinta5(lst_a, lst_c))
+            print(cerinta5(lst_b, lst_c))
         elif cmd == '6':
             break
         else:
@@ -173,6 +199,7 @@ test_is_palindrome()
 test_det_palidroame_din_a_concatenat_b()
 test_oglindit()
 test_a_divizibil_cu_elem_din_lst()
+test_cerinta5()
 
 
 if __name__ == '__main__':
