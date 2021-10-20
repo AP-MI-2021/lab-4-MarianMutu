@@ -58,16 +58,76 @@ def is_palindrome(nr):
         return False
 
 
-def read_lists():
-    list_str_a = input("Introduceti termenii primei liste: ").split(" ")
-    list_str_b = input("Introduceti termenii celei de a doua liste: ").split(" ")
-    lst_a = []
-    lst_b = []
-    for x in list_str_a:
-        lst_a.append(int(x))
-    for y in list_str_b:
-        lst_b.append(int(y))
-    return lst_a, lst_b
+def test_is_palindrome():
+    assert is_palindrome('1221') == True
+    assert is_palindrome('322') == False
+    assert is_palindrome('2') == True
+
+
+def det_palidroame_din_a_concatenat_b(lst_a, lst_b):
+    """
+    determina palindroamele obtinute prin concatenarea nr de pe aceleasi pozitii
+    :param lst_a: multimea A
+    :param lst_b: multimea B
+    :return: lista rezultata
+    variabila var este de tip string
+    """
+    rez = []
+    for x in range(len(lst_a)):
+        for y in range(len(lst_b)):
+            if x == y:
+                var = str(lst_a[x]) + str(lst_b[y])
+                if is_palindrome(var):
+                    rez.append(int(var))
+    return rez
+
+def test_det_palidroame_din_a_concatenat_b():
+    assert det_palidroame_din_a_concatenat_b([12, 22, 36, 11], [21, 23 ,63, 55, 424]) == [1221, 3663]
+    assert det_palidroame_din_a_concatenat_b([1, 23, 12], [21, 3, 21, 7]) == [121, 1221]
+
+
+def oglindit(n):
+    """
+    calculeaza oglinditul lui n
+    :param n: int
+    :return: int
+    """
+    og = str(n)
+    og = og[::-1]
+    return int(og)
+
+
+def test_oglindit():
+    assert oglindit(122) == 221
+    assert oglindit(93737) == 73739
+    assert oglindit(3) == 3
+
+
+def a_divizibil_cu_elem_din_lst(a, lst):
+    """
+    determinam daca variabila a este divizibila cu toate elementele din lista lst
+    :param a: int
+    :param lst: lista de nr intregi
+    :return: true or false
+    """
+    for x in lst:
+        if a % x != 0:
+            return False
+    return True
+
+
+def test_a_divizibil_cu_elem_din_lst():
+    assert a_divizibil_cu_elem_din_lst(12, [1, 2, 3 ,4]) == True
+    assert a_divizibil_cu_elem_din_lst(2, [1, 4, 6]) == False
+    assert a_divizibil_cu_elem_din_lst(3, [6]) == False
+
+
+def read_list():
+    list_str = input("Introduceti termenii din lista: ").split(" ")
+    lst = []
+    for x in list_str:
+        lst.append(int(x))
+    return lst
 
 
 def show_menu():
@@ -90,15 +150,17 @@ def main():
         show_menu()
         cmd = input("Introduceti o comanda: ")
         if cmd == '1':
-            lst_a, lst_b = read_lists()
+            lst_a = read_list()
+            lst_b = read_list()
         elif cmd == '2':
             print(same_number_of_even_numbers(lst_a, lst_b))
         elif cmd == '3':
             print(a_intersectat_cu_b(lst_a, lst_b))
         elif cmd == '4':
-            pass
+            print(det_palidroame_din_a_concatenat_b(lst_a, lst_b))
         elif cmd == '5':
-            pass
+            lst_c = read_list()
+
         elif cmd == '6':
             break
         else:
@@ -107,6 +169,10 @@ def main():
 
 test_a_intersectat_cu_b()
 test_same_number_of_even_numbers()
+test_is_palindrome()
+test_det_palidroame_din_a_concatenat_b()
+test_oglindit()
+test_a_divizibil_cu_elem_din_lst()
 
 
 if __name__ == '__main__':
